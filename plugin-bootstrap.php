@@ -24,6 +24,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'Cheatin&#8217; uh?' );
 }
 
+require_once plugin_dir_path( __FILE__ ) . 'src/custom/n8f-popup-login.php';
+
+
 /**
  * Setup the plugin's constants.
  *
@@ -91,6 +94,23 @@ function n8f_popup_init_autoloader() {
  */
 function n8f_popup_add_these_plugin_styles_and_scripts() {
 
+	//Login Stytles and Scripts
+	wp_enqueue_style( 'n8f-pop-login-css', plugin_dir_url( __FILE__ ) . 'css/n8f-pop-login.css' );
+
+	wp_enqueue_script( 'n8f-pop-login-js', plugin_dir_url( __FILE__ ) . 'js/n8f-pop-login.js', array( 'jquery', 'jquery-ui-dialog', 'jquery-ui-tabs' ), false, false );
+
+	wp_localize_script( 'n8f-pop-login-js', 'ajax_login_object', array(
+        'ajaxurl' => admin_url( 'admin-ajax.php' ),
+        'redirecturl' => home_url(),
+        'loadingmessage' => __('Sending user info, please wait...')
+    ));
+
+    // Enable the user with no privileges to run ajax_login() in AJAX
+    add_action( 'wp_ajax_nopriv_ajaxlogin', 'ajax_login' );
+
+
+
+	//Lesson GIF popup styles and scripts
 	if(get_field('activate_gif_popup_for_this_lesson') === 'yes') {
 
 		//enqueue main styles and scripts
