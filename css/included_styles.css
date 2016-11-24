@@ -1,0 +1,68 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    background-color: #000;
+    opacity: .5;
+}
+
+.ui-dialog {
+    background: white;
+    border-radius: 5px;
+    z-index: 99999;
+}
+
+button.ui-button-icon-only {
+    position: absolute;
+    right: 0;
+}
+
+div.ui-dialog-titlebar {
+    height: 0;
+}
+
+#n8f-gif-popup {
+    padding: 10px;
+    text-align: center;
+}
+
+#n8f-gif-popup img {
+    max-width: 600px;
+}
+
+#n8f-gif-popup span.dashicons.dashicons-twitter {
+    margin: 0 30px 0 5px;
+    font-size: 50px;
+    color: #59CEF2;
+}
+
+#n8f-gif-popup span.dashicons.dashicons-facebook {
+    margin: 0 30px;
+    font-size: 50px;
+    color: #3B5998;
+}
+
+div.ui-dialog-buttonset button .ui-button-text {
+    background: none;
+    border: 1px solid #FF9D00;
+    border-radius: 5px !important;
+    background-color: #FF9D00 !important;
+    font-size: 18px !important;
+    color: #fff;
+    padding: 5px 20px;
+    border-bottom: 4px solid #D48E29;
+    transition: background-color ease 1s;
+    transition: color ease 1s;
+}
+
+
+/*************/
+
+.ui-draggable .ui-dialog-titlebar {
+    display: none;
+}
+
+
