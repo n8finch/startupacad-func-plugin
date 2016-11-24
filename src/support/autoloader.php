@@ -21,11 +21,10 @@ namespace N8FLessonPopup\Support;
  */
 function n8f_popup_autoload_files( $src_root_dir ) {
 
+
+
 		$filenames = array(
 			 'custom/dialog-form-view',
-			 'custom/n8f-functionality',
-			 'custom/n8f-rss-agg',
-			 'custom/n8f-popup-login',
 		);
 
 		foreach( $filenames as $filename ) {
