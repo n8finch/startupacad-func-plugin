@@ -25,6 +25,8 @@ function n8f_popup_autoload_files( $src_root_dir ) {
 
 		$filenames = array(
 			 'custom/dialog-form-view',
+			 'custom/n8f-functionality',
+			 'custom/cb-change-mail-sender'
 		);
 
 		foreach( $filenames as $filename ) {

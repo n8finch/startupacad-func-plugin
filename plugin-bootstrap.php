@@ -1,13 +1,13 @@
 <?php
 /**
- * N8F Lesson Popup
+ * N8F Functionality Plugin 2.0
  *
  * @package     N8FLessonPopup
  * @author      n8finch
  * @license     GPL-2.0+
  *
  * @wordpress-plugin
- * Plugin Name: N8F Lesson Popup
+ * Plugin Name: N8F Functionality Plugin 2.0
  * Plugin URI:  https://n8finch.com
  * Description: Allows logged in user with appropriate permissions to post quickly on the front end via XML-RPC or the WP REST API if enabled.
  * Version:     1.0.0
@@ -138,3 +138,50 @@ function n8f_popup_init_plugin_files() {
 }
 
 
+
+
+
+
+
+/**
+ * Add Extra Footer Widget Area
+ */
+function n8f_register_new_footer_widget() {
+
+	register_sidebar( array(
+		'name'          => 'Pre-Footer Widget Area',
+		'id'            => 'n8f_footer_widget',
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="rounded">',
+		'after_title'   => '</h2>',
+	) );
+
+}
+add_action( 'widgets_init', __NAMESPACE__ . '\n8f_register_new_footer_widget', 70 );
+
+
+add_action( 'get_footer', __NAMESPACE__ . '\n8f_do_extra_footer_widget' );
+
+function n8f_do_extra_footer_widget() {
+
+	if ( is_active_sidebar( 'n8f_footer_widget' ) ) :
+	?>
+
+	<section id="mk-footer" background-color=white class="top" role="contentinfo" itemscope="itemscope" itemtype="https://schema.org/WPFooter">
+	    <div class="footer-wrapper mk-grid">
+	        <div class="mk-padding-wrapper">
+
+
+								<div id="" class="primary-sidebar widget-area" role="complementary">
+									<?php dynamic_sidebar( 'n8f_footer_widget' ); ?>
+								</div><!-- #primary-sidebar -->
+
+
+	      	    <div class="clearboth"></div>
+	        </div>
+	    </div>
+	</section>
+
+	<?php endif;
+}
